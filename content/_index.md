@@ -8,6 +8,6 @@ Various algorithm and data structure implementations discovered while participat
 ## Table of Contents
 
 - [Searching and Sorting Problems](searching-and-sorting/)
-- [Dynamic Programming Problems](Dynamic-Programming-Problems/)
+- [Dynamic Programming Problems](dynamic-programming-problems/)
 - [Data Structures Problems](data-structures/)
 - [Math Problems](math/)

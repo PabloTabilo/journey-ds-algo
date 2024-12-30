@@ -12,5 +12,5 @@ To understand this type of problem, the first step is to identified the characte
 * In your implementation on the recursive function, is there a specific __order__ require to process the solution?
 
 ## Table of Contents
-- [DP level 1](DP-level-1)
-- [DP level 2](DP-level-2)
+- [DP level 1](dp-level-1/)
+- [DP level 2](dp-level-2/)
