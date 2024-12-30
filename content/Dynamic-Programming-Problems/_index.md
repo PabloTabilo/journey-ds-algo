@@ -1,6 +1,6 @@
 ---
 title: "Dynamic Programming Problems"
-weight: 3
+weight: 2
 ---
 # Dynamic Programming Problems
 

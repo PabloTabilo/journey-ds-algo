@@ -6,8 +6,8 @@ title: "Home"
 Various algorithm and data structure implementations discovered while participating in contests or solving problems.
 
 ## Table of Contents
-- [Math Problems](math/)
+
 - [Searching and Sorting Problems](searching-and-sorting/)
+- [Dynamic Programming Problems](Dynamic-Programming-Problems/)
 - [Data Structures Problems](data-structures/)
-- [Strings Problems](strings/)
-- [TODO](todo/)
+- [Math Problems](math/)

@@ -5,17 +5,26 @@
     <loc>http://localhost:1313/math/arithmetic-counting-and-modulus/</loc>
     <lastmod>2024-12-10T14:20:02-03:00</lastmod>
   </url><url>
+    <loc>http://localhost:1313/dynamic-programming-problems/dp-level-1/</loc>
+    <lastmod>2024-12-30T20:24:10-03:00</lastmod>
+  </url><url>
     <loc>http://localhost:1313/searching-and-sorting/easy-sort-problem/</loc>
     <lastmod>2024-12-13T10:50:58-03:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/math/</loc>
-    <lastmod>2024-12-10T14:09:37-03:00</lastmod>
+    <loc>http://localhost:1313/searching-and-sorting/</loc>
+    <lastmod>2024-12-30T20:24:10-03:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/data-structures/</loc>
     <lastmod>2024-12-02T20:43:40-03:00</lastmod>
   </url><url>
+    <loc>http://localhost:1313/dynamic-programming-problems/dp-level-2/</loc>
+    <lastmod>2024-12-30T20:24:10-03:00</lastmod>
+  </url><url>
     <loc>http://localhost:1313/math/legendres-formula/</loc>
     <lastmod>2024-12-10T14:09:37-03:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/dynamic-programming-problems/</loc>
+    <lastmod>2024-12-30T20:24:10-03:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/math/modular-exponentiation/</loc>
     <lastmod>2024-12-10T14:09:37-03:00</lastmod>
@@ -23,19 +32,19 @@
     <loc>http://localhost:1313/math/fermats-little-theorem/</loc>
     <lastmod>2024-12-10T14:09:37-03:00</lastmod>
   </url><url>
+    <loc>http://localhost:1313/math/</loc>
+    <lastmod>2024-12-30T20:24:10-03:00</lastmod>
+  </url><url>
     <loc>http://localhost:1313/categories/</loc>
   </url><url>
     <loc>http://localhost:1313/data-structures/dequeue/</loc>
-    <lastmod>2024-12-11T13:06:40-03:00</lastmod>
+    <lastmod>2024-12-30T20:24:10-03:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/data-structures/graphs/</loc>
     <lastmod>2024-12-02T20:43:40-03:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/</loc>
     <lastmod>2024-12-02T20:43:40-03:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/searching-and-sorting/</loc>
-    <lastmod>2024-12-13T10:50:58-03:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/data-structures/segment-tree/</loc>
     <lastmod>2024-12-02T20:43:40-03:00</lastmod>

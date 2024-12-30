@@ -1,6 +1,6 @@
 ---
 title: "Data Structures Problems"
-weight: 2
+weight: 3
 ---
 
 # Data Structures Problems
