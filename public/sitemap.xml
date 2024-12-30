@@ -5,6 +5,9 @@
     <loc>http://localhost:1313/math/arithmetic-counting-and-modulus/</loc>
     <lastmod>2024-12-10T14:20:02-03:00</lastmod>
   </url><url>
+    <loc>http://localhost:1313/searching-and-sorting/easy-sort-problem/</loc>
+    <lastmod>2024-12-13T10:50:58-03:00</lastmod>
+  </url><url>
     <loc>http://localhost:1313/math/</loc>
     <lastmod>2024-12-10T14:09:37-03:00</lastmod>
   </url><url>
@@ -30,6 +33,9 @@
   </url><url>
     <loc>http://localhost:1313/</loc>
     <lastmod>2024-12-02T20:43:40-03:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/searching-and-sorting/</loc>
+    <lastmod>2024-12-13T10:50:58-03:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/data-structures/segment-tree/</loc>
     <lastmod>2024-12-02T20:43:40-03:00</lastmod>

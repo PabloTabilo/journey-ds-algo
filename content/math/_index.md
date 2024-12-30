@@ -1,6 +1,6 @@
 ---
 title: "Math Problems"
-weight: 1
+weight: 4
 ---
 
 # Math Problems

@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
+  Dynamic Programming Problems
+  #
+
+To understand this type of problem, the first step is to identified the characteristics. For example:
+
+It&rsquo;s a maximum / minimum problem?
+Do I need to count a number of events?
+Can this problem be solve using recursion?
+Does the solution follow the same properties or structure, independent of the problem&rsquo;s size?
+In your implementation on the recursive function, is there a specific order require to process the solution?
+
+
+  Table of Contents
+  #
+
+
+DP level 1
+DP level 2
+">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/dynamic-programming-problems/">
+  <meta property="og:site_name" content="A Journey Through DS and Algorithms">
+  <meta property="og:title" content="Dynamic Programming Problems">
+  <meta property="og:description" content="Dynamic Programming Problems#To understand this type of problem, the first step is to identified the characteristics. For example:
+It’s a maximum / minimum problem? Do I need to count a number of events? Can this problem be solve using recursion? Does the solution follow the same properties or structure, independent of the problem’s size? In your implementation on the recursive function, is there a specific order require to process the solution? Table of Contents#DP level 1 DP level 2">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="website">
+<title>Dynamic Programming Problems | A Journey Through DS and Algorithms</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1313/dynamic-programming-problems/">
+<link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/en.search.min.07012d9737c568364f8ea7e782c3daeefaf0ad0080fbf5b6d3398429ad7a3f78.js" integrity="sha256-BwEtlzfFaDZPjqfngsPa7vrwrQCA&#43;/W20zmEKa16P3g=" crossorigin="anonymous"></script>
+
+<link rel="stylesheet" href="/katex/katex.min.css">
+<script defer src="/katex/katex.min.js"></script>
+<script defer src="/katex/auto-render.min.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    renderMathInElement(document.body, {
+      delimiters: [
+        { left: "$$", right: "$$", display: true },
+        { left: "$", right: "$", display: false }
+      ]
+    });
+  });
+</script>
+
+<link rel="alternate" type="application/rss+xml" href="http://localhost:1313/dynamic-programming-problems/index.xml" title="A Journey Through DS and Algorithms" />
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>A Journey Through DS and Algorithms</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/searching-and-sorting/" class="">Searching And Sorting Problems</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/searching-and-sorting/easy-sort-problem/" class="">Easy Sort Problem</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/data-structures/" class="">Data Structures Problems</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/data-structures/dequeue/" class="">Dequeue</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/data-structures/graphs/" class="">Graphs</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/data-structures/segment-tree/" class="">Segment Tree</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/dynamic-programming-problems/" class="active">Dynamic Programming Problems</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/dynamic-programming-problems/dp-level-1/" class="">DP Level 1</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/dynamic-programming-problems/dp-level-2/" class="">DP Level 2</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/math/" class="">Math Problems</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/math/arithmetic-counting-and-modulus/" class="">Arithmetic, counting and modulus operations</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/math/legendres-formula/" class="">Legendre&#39;s Formula</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/math/modular-exponentiation/" class="">Modular Exponentiation</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/math/fermats-little-theorem/" class="">Fermat&#39;s little Theorem</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Dynamic Programming Problems</h3>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#table-of-contents">Table of Contents</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="dynamic-programming-problems">
+  Dynamic Programming Problems
+  <a class="anchor" href="#dynamic-programming-problems">#</a>
+</h1>
+<p>To understand this type of problem, the first step is to identified the characteristics. For example:</p>
+<ul>
+<li>It&rsquo;s a <strong>maximum</strong> / <strong>minimum</strong> problem?</li>
+<li>Do I need to <strong>count</strong> a number of events?</li>
+<li>Can this problem be solve using <strong>recursion</strong>?</li>
+<li>Does the solution follow the <strong>same</strong> properties or structure, <strong>independent</strong> of the problem&rsquo;s <code>size</code>?</li>
+<li>In your implementation on the recursive function, is there a specific <strong>order</strong> require to process the solution?</li>
+</ul>
+<h2 id="table-of-contents">
+  Table of Contents
+  <a class="anchor" href="#table-of-contents">#</a>
+</h2>
+<ul>
+<li><a href="DP-level-1">DP level 1</a></li>
+<li><a href="DP-level-2">DP level 2</a></li>
+</ul>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#table-of-contents">Table of Contents</a></li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

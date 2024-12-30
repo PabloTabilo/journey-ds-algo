@@ -30,11 +30,11 @@ Explanation:
 
 
 ### Thoughts
-* Ok, the substring must be contiguous and not empty, so the combinations must be adjacents chars.
-* If i need calculate combinations that are adjacent on a string may be i can use sliding windows
-* Ok, but for sliding window if i wanna pop and push chars from front or end to my temporal contiguos substrings of size `k`, the time complexity gonna up if i try to insert elements or chars on front.
-* Remember that the operation `+=` do it on a string, create a copy of the object. That's occupied time and memory.
-* So if i only want get a track of the chars that are on my window, i can use a `deque<char>` and pop or push fast.
+* The substring must be contiguous and non-empty, so the combinations should consist of adjacent characters.
+* If I need to calculate combinations of adjacent characters in a string, perhaps I can use a sliding window approach.
+* However, with a sliding window, if I want to pop or push characters from the front or end of my temporary contiguous substrings of size `k`, the time complexity will increase if I try to insert elements at the front.
+* Keep in mind that the `+=` operation on a string creates a copy of the object, which uses both time and memory.
+* To efficiently track the characters in my window, I can use a `deque<char>` for fast popping and pushing.
 
 
 ## References:

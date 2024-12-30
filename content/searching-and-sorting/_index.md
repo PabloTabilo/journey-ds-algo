@@ -1,5 +1,6 @@
 ---
 title: "Searching And Sorting Problems"
+weight: 1
 ---
 # Searching and Sorting
 

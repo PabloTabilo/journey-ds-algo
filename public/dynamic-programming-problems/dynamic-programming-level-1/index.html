@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
+  Starting with Sorting Problems
+  #
+
+Let&rsquo;s start by looking at this LeetCode problem to help you understand the core concepts. Together we&rsquo;ll explore the different techniques and data structures you can use to solve it effectively.
+
+  2593 - Find Score of An Array After Marking All Elements
+  #
+
+
+Level medium.
+
+
+  Problem statement
+  #
+
+You are given an array nums consisting of positive integers.
+Starting with score = 0, apply the following algorithm:">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/dynamic-programming-problems/dynamic-programming-level-1/">
+  <meta property="og:site_name" content="A Journey Through DS and Algorithms">
+  <meta property="og:title" content="DP Level 1">
+  <meta property="og:description" content="Starting with Sorting Problems#Let’s start by looking at this LeetCode problem to help you understand the core concepts. Together we’ll explore the different techniques and data structures you can use to solve it effectively.
+2593 - Find Score of An Array After Marking All Elements#Level medium. Problem statement#You are given an array nums consisting of positive integers.
+Starting with score = 0, apply the following algorithm:">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="dynamic-programming-problems">
+<title>DP Level 1 | A Journey Through DS and Algorithms</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1313/dynamic-programming-problems/dynamic-programming-level-1/">
+<link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/en.search.min.8466e0c986239138462222b2db8cb1dc7a5f3bafac2a73e2d4507ec86283a0d4.js" integrity="sha256-hGbgyYYjkThGIiKy24yx3HpfO6&#43;sKnPi1FB&#43;yGKDoNQ=" crossorigin="anonymous"></script>
+
+<link rel="stylesheet" href="/katex/katex.min.css">
+<script defer src="/katex/katex.min.js"></script>
+<script defer src="/katex/auto-render.min.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    renderMathInElement(document.body, {
+      delimiters: [
+        { left: "$$", right: "$$", display: true },
+        { left: "$", right: "$", display: false }
+      ]
+    });
+  });
+</script>
+
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>A Journey Through DS and Algorithms</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/math/" class="">Math Problems</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/math/arithmetic-counting-and-modulus/" class="">Arithmetic, counting and modulus operations</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/math/legendres-formula/" class="">Legendre&#39;s Formula</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/math/modular-exponentiation/" class="">Modular Exponentiation</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/math/fermats-little-theorem/" class="">Fermat&#39;s little Theorem</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/data-structures/" class="">Data Structures Problems</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/data-structures/dequeue/" class="">Dequeue</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/data-structures/graphs/" class="">Graphs</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/data-structures/segment-tree/" class="">Segment Tree</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/dynamic-programming-problems/" class="">Dynamic Programming Problems</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/dynamic-programming-problems/dynamic-programming-level-1/" class="active">DP Level 1</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/searching-and-sorting/" class="">Searching And Sorting Problems</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/searching-and-sorting/easy-sort-problem/" class="">Easy Sort Problem</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>DP Level 1</h3>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#2593---find-score-of-an-array-after-marking-all-elements">2593 - Find Score of An Array After Marking All Elements</a>
+      <ul>
+        <li><a href="#problem-statement">Problem statement</a></li>
+        <li><a href="#thoughts">Thoughts</a></li>
+        <li><a href="#submissions-results">Submissions Results</a></li>
+        <li><a href="#references">References:</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="starting-with-sorting-problems">
+  Starting with Sorting Problems
+  <a class="anchor" href="#starting-with-sorting-problems">#</a>
+</h1>
+<p>Let&rsquo;s start by looking at this LeetCode problem to help you understand the core concepts. Together we&rsquo;ll explore the different techniques and data structures you can use to solve it effectively.</p>
+<h2 id="2593---find-score-of-an-array-after-marking-all-elements">
+  2593 - Find Score of An Array After Marking All Elements
+  <a class="anchor" href="#2593---find-score-of-an-array-after-marking-all-elements">#</a>
+</h2>
+<ul>
+<li>Level <code>medium</code>.</li>
+</ul>
+<h3 id="problem-statement">
+  Problem statement
+  <a class="anchor" href="#problem-statement">#</a>
+</h3>
+<p>You are given an array <code>nums</code> consisting of positive integers.</p>
+<p>Starting with <code>score = 0</code>, apply the following algorithm:</p>
+<p>Choose the smallest integer of the array that is not marked. If there is a tie, choose the one with the smallest index.
+Add the value of the chosen integer to score.
+Mark the chosen element and its two adjacent elements if they exist.
+Repeat until all the array elements are marked.
+Return the score you get after applying the above algorithm.</p>
+<p>Example 1:</p>
+<p>Input: nums = [2,1,3,4,5,2]
+Output: 7
+Explanation: We mark the elements as follows:</p>
+<ul>
+<li>1 is the smallest unmarked element, so we mark it and its two adjacent elements: [2,1,3,4,5,2].</li>
+<li>2 is the smallest unmarked element, so we mark it and its left adjacent element: [2,1,3,4,5,2].</li>
+<li>4 is the only remaining unmarked element, so we mark it: [2,1,3,4,5,2].
+Our score is 1 + 2 + 4 = 7.
+Example 2:</li>
+</ul>
+<p>Input: nums = [2,3,5,1,3,2]
+Output: 5
+Explanation: We mark the elements as follows:</p>
+<ul>
+<li>1 is the smallest unmarked element, so we mark it and its two adjacent elements: [2,3,5,1,3,2].</li>
+<li>2 is the smallest unmarked element, since there are two of them, we choose the left-most one, so we mark the one at index 0 and its right adjacent element: [2,3,5,1,3,2].</li>
+<li>2 is the only remaining unmarked element, so we mark it: [2,3,5,1,3,2].
+Our score is 1 + 2 + 2 = 5.</li>
+</ul>
+<p>Constraints:</p>
+<p>1 &lt;= nums.length &lt;= 105
+1 &lt;= nums[i] &lt;= 106</p>
+<h3 id="thoughts">
+  Thoughts
+  <a class="anchor" href="#thoughts">#</a>
+</h3>
+<h4 id="approach-1">
+  Approach 1
+  <a class="anchor" href="#approach-1">#</a>
+</h4>
+<div class="highlight"><pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#008000;font-weight:bold">class</span> <span style="color:#00f;font-weight:bold">Solution</span><span style="color:#bbb"> </span>{<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#008000;font-weight:bold">static</span><span style="color:#bbb"> </span><span style="color:#008000;font-weight:bold">class</span> <span style="color:#00f;font-weight:bold">Pair</span><span style="color:#bbb"> </span><span style="color:#008000;font-weight:bold">implements</span><span style="color:#bbb"> </span>Comparable<span style="color:#666">&lt;</span>Pair<span style="color:#666">&gt;</span>{<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span><span style="color:#b00040">int</span><span style="color:#bbb"> </span>num;<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span><span style="color:#b00040">int</span><span style="color:#bbb"> </span>index;<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span>Pair(<span style="color:#b00040">int</span><span style="color:#bbb"> </span>num,<span style="color:#bbb"> </span><span style="color:#b00040">int</span><span style="color:#bbb"> </span>index){<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">            </span><span style="color:#008000;font-weight:bold">this</span>.<span style="color:#7d9029">num</span><span style="color:#bbb"> </span><span style="color:#666">=</span><span style="color:#bbb"> </span>num;<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">            </span><span style="color:#008000;font-weight:bold">this</span>.<span style="color:#7d9029">index</span><span style="color:#bbb"> </span><span style="color:#666">=</span><span style="color:#bbb"> </span>index;<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span>}<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span><span style="color:#a2f">@Override</span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span><span style="color:#008000;font-weight:bold">public</span><span style="color:#bbb"> </span><span style="color:#b00040">int</span><span style="color:#bbb"> </span><span style="color:#00f">compareTo</span>(Pair<span style="color:#bbb"> </span>other){<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">            </span><span style="color:#008000;font-weight:bold">if</span>(<span style="color:#008000;font-weight:bold">this</span>.<span style="color:#7d9029">num</span><span style="color:#bbb"> </span><span style="color:#666">!=</span><span style="color:#bbb"> </span>other.<span style="color:#7d9029">num</span>){<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">                </span><span style="color:#008000;font-weight:bold">return</span><span style="color:#bbb"> </span>Integer.<span style="color:#7d9029">compare</span>(<span style="color:#008000;font-weight:bold">this</span>.<span style="color:#7d9029">num</span>,<span style="color:#bbb"> </span>other.<span style="color:#7d9029">num</span>);<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">            </span>}<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">            </span><span style="color:#008000;font-weight:bold">return</span><span style="color:#bbb"> </span>Integer.<span style="color:#7d9029">compare</span>(<span style="color:#008000;font-weight:bold">this</span>.<span style="color:#7d9029">index</span>,<span style="color:#bbb"> </span>other.<span style="color:#7d9029">index</span>);<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span>}<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span>}<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#008000;font-weight:bold">public</span><span style="color:#bbb"> </span><span style="color:#b00040">long</span><span style="color:#bbb"> </span><span style="color:#00f">findScore</span>(<span style="color:#b00040">int</span><span style="color:#666">[]</span><span style="color:#bbb"> </span>nums)<span style="color:#bbb"> </span>{<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span><span style="color:#b00040">long</span><span style="color:#bbb"> </span>ans<span style="color:#bbb"> </span><span style="color:#666">=</span><span style="color:#bbb"> </span>0;<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span>TreeSet<span style="color:#666">&lt;</span>Pair<span style="color:#666">&gt;</span><span style="color:#bbb"> </span>set<span style="color:#bbb"> </span><span style="color:#666">=</span><span style="color:#bbb"> </span><span style="color:#008000;font-weight:bold">new</span><span style="color:#bbb"> </span>TreeSet<span style="color:#666">&lt;&gt;</span>();<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span><span style="color:#b00040">int</span><span style="color:#bbb"> </span>n<span style="color:#bbb"> </span><span style="color:#666">=</span><span style="color:#bbb"> </span>nums.<span style="color:#7d9029">length</span>;<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span><span style="color:#008000;font-weight:bold">for</span>(<span style="color:#b00040">int</span><span style="color:#bbb"> </span>i<span style="color:#666">=</span>0;i<span style="color:#666">&lt;</span>n;i<span style="color:#666">++</span>){<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">            </span>set.<span style="color:#7d9029">add</span>(<span style="color:#008000;font-weight:bold">new</span><span style="color:#bbb"> </span>Pair(nums<span style="color:#666">[</span>i<span style="color:#666">]</span>,<span style="color:#bbb"> </span>i));<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span>}<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span><span style="color:#008000;font-weight:bold">while</span>(<span style="color:#666">!</span>set.<span style="color:#7d9029">isEmpty</span>()){<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">            </span>Pair<span style="color:#bbb"> </span>p<span style="color:#bbb"> </span><span style="color:#666">=</span><span style="color:#bbb"> </span>set.<span style="color:#7d9029">pollFirst</span>();<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">            </span>ans<span style="color:#bbb"> </span><span style="color:#666">+=</span><span style="color:#bbb"> </span>(<span style="color:#b00040">long</span>)<span style="color:#bbb"> </span>p.<span style="color:#7d9029">num</span>;<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">            </span><span style="color:#b00040">int</span><span style="color:#bbb"> </span>idx<span style="color:#bbb"> </span><span style="color:#666">=</span><span style="color:#bbb"> </span>p.<span style="color:#7d9029">index</span>;<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">            </span><span style="color:#008000;font-weight:bold">if</span>(idx<span style="color:#bbb"> </span><span style="color:#666">+</span><span style="color:#bbb"> </span>1<span style="color:#bbb"> </span><span style="color:#666">&lt;</span><span style="color:#bbb"> </span>n){<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">                </span>set.<span style="color:#7d9029">remove</span>(<span style="color:#008000;font-weight:bold">new</span><span style="color:#bbb"> </span>Pair(nums<span style="color:#666">[</span>idx<span style="color:#666">+</span>1<span style="color:#666">]</span>,idx<span style="color:#666">+</span>1));<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">            </span>}<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">            </span><span style="color:#008000;font-weight:bold">if</span>(idx<span style="color:#bbb"> </span><span style="color:#666">-</span><span style="color:#bbb"> </span>1<span style="color:#bbb"> </span><span style="color:#666">&gt;=</span><span style="color:#bbb"> </span>0){<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">                </span>set.<span style="color:#7d9029">remove</span>(<span style="color:#008000;font-weight:bold">new</span><span style="color:#bbb"> </span>Pair(nums<span style="color:#666">[</span>idx<span style="color:#666">-</span>1<span style="color:#666">]</span>,idx<span style="color:#666">-</span>1));<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">            </span>}<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span>}<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span><span style="color:#008000;font-weight:bold">return</span><span style="color:#bbb"> </span>ans;<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span>}<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span>}<span style="color:#bbb">
+</span></span></span></code></pre></div><h4 id="approach-2">
+  Approach 2
+  <a class="anchor" href="#approach-2">#</a>
+</h4>
+<div class="highlight"><pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#008000;font-weight:bold">class</span> <span style="color:#00f;font-weight:bold">Solution</span><span style="color:#bbb"> </span>{<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#008000;font-weight:bold">public</span><span style="color:#bbb"> </span><span style="color:#b00040">long</span><span style="color:#bbb"> </span><span style="color:#00f">findScore</span>(<span style="color:#b00040">int</span><span style="color:#666">[]</span><span style="color:#bbb"> </span>nums)<span style="color:#bbb"> </span>{<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span><span style="color:#b00040">long</span><span style="color:#bbb"> </span>ans<span style="color:#bbb"> </span><span style="color:#666">=</span><span style="color:#bbb"> </span>0;<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span><span style="color:#b00040">int</span><span style="color:#bbb"> </span>n<span style="color:#bbb"> </span><span style="color:#666">=</span><span style="color:#bbb"> </span>nums.<span style="color:#7d9029">length</span>;<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span><span style="color:#b00040">int</span><span style="color:#bbb"> </span><span style="color:#666">[][]</span><span style="color:#bbb"> </span>sorted<span style="color:#bbb"> </span><span style="color:#666">=</span><span style="color:#bbb"> </span><span style="color:#008000;font-weight:bold">new</span><span style="color:#bbb"> </span><span style="color:#b00040">int</span><span style="color:#666">[</span>n<span style="color:#666">][</span>2<span style="color:#666">]</span>;<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span><span style="color:#b00040">boolean</span><span style="color:#bbb"> </span><span style="color:#666">[]</span><span style="color:#bbb"> </span>marked<span style="color:#bbb"> </span><span style="color:#666">=</span><span style="color:#bbb"> </span><span style="color:#008000;font-weight:bold">new</span><span style="color:#bbb"> </span><span style="color:#b00040">boolean</span><span style="color:#666">[</span>n<span style="color:#666">]</span>;<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span><span style="color:#008000;font-weight:bold">for</span>(<span style="color:#b00040">int</span><span style="color:#bbb"> </span>i<span style="color:#666">=</span>0;i<span style="color:#666">&lt;</span>n;i<span style="color:#666">++</span>){<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">            </span>sorted<span style="color:#666">[</span>i<span style="color:#666">][</span>0<span style="color:#666">]</span><span style="color:#bbb"> </span><span style="color:#666">=</span><span style="color:#bbb"> </span>nums<span style="color:#666">[</span>i<span style="color:#666">]</span>;<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">            </span>sorted<span style="color:#666">[</span>i<span style="color:#666">][</span>1<span style="color:#666">]</span><span style="color:#bbb"> </span><span style="color:#666">=</span><span style="color:#bbb"> </span>i;<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span>}<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span>Arrays.<span style="color:#7d9029">sort</span>(sorted,<span style="color:#bbb"> </span>(arr1,<span style="color:#bbb"> </span>arr2)<span style="color:#bbb"> </span><span style="color:#666">-&gt;</span><span style="color:#bbb"> </span>arr1<span style="color:#666">[</span>0<span style="color:#666">]</span><span style="color:#bbb"> </span><span style="color:#666">-</span><span style="color:#bbb"> </span>arr2<span style="color:#666">[</span>0<span style="color:#666">]</span>);<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span><span style="color:#008000;font-weight:bold">for</span>(<span style="color:#b00040">int</span><span style="color:#bbb"> </span>i<span style="color:#666">=</span>0;i<span style="color:#666">&lt;</span>n;i<span style="color:#666">++</span>){<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">            </span><span style="color:#b00040">int</span><span style="color:#bbb"> </span>num<span style="color:#bbb"> </span><span style="color:#666">=</span><span style="color:#bbb"> </span>sorted<span style="color:#666">[</span>i<span style="color:#666">][</span>0<span style="color:#666">]</span>;<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">            </span><span style="color:#b00040">int</span><span style="color:#bbb"> </span>idx<span style="color:#bbb"> </span><span style="color:#666">=</span><span style="color:#bbb"> </span>sorted<span style="color:#666">[</span>i<span style="color:#666">][</span>1<span style="color:#666">]</span>;<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">            </span><span style="color:#008000;font-weight:bold">if</span>(<span style="color:#666">!</span>marked<span style="color:#666">[</span>idx<span style="color:#666">]</span>){<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">                </span>ans<span style="color:#bbb"> </span><span style="color:#666">+=</span><span style="color:#bbb"> </span>(<span style="color:#b00040">long</span>)<span style="color:#bbb"> </span>num;<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">                </span>marked<span style="color:#666">[</span>idx<span style="color:#666">]</span><span style="color:#bbb"> </span><span style="color:#666">=</span><span style="color:#bbb"> </span><span style="color:#008000;font-weight:bold">true</span>;<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">                </span><span style="color:#008000;font-weight:bold">if</span>(idx<span style="color:#666">-</span>1<span style="color:#bbb"> </span><span style="color:#666">&gt;=</span><span style="color:#bbb"> </span>0){<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">                    </span>marked<span style="color:#666">[</span>idx<span style="color:#666">-</span>1<span style="color:#666">]=</span><span style="color:#008000;font-weight:bold">true</span>;<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">                </span>}<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">                </span><span style="color:#008000;font-weight:bold">if</span>(idx<span style="color:#666">+</span>1<span style="color:#bbb"> </span><span style="color:#666">&lt;</span><span style="color:#bbb"> </span>n){<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">                    </span>marked<span style="color:#666">[</span>idx<span style="color:#666">+</span>1<span style="color:#666">]=</span><span style="color:#008000;font-weight:bold">true</span>;<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">                </span>}<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">            </span>}<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span>}<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span><span style="color:#008000;font-weight:bold">return</span><span style="color:#bbb"> </span>ans;<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span>}<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span>}<span style="color:#bbb">
+</span></span></span></code></pre></div><h3 id="submissions-results">
+  Submissions Results
+  <a class="anchor" href="#submissions-results">#</a>
+</h3>
+<p><img src="images/searchingAndSorting_EasySortProblem_SubmissionResults_1.PNG" alt="Sumbissions Results" /></p>
+<h3 id="references">
+  References:
+  <a class="anchor" href="#references">#</a>
+</h3>
+<ul>
+<li>Problem: <a href="https://leetcode.com/problems/find-score-of-an-array-after-marking-all-elements/description/">https://leetcode.com/problems/find-score-of-an-array-after-marking-all-elements/description/</a></li>
+<li><code>TreeSet</code> data structure on java: <a href="https://docs.oracle.com/javase/8/docs/api/java/util/TreeSet.html">https://docs.oracle.com/javase/8/docs/api/java/util/TreeSet.html</a></li>
+</ul>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#2593---find-score-of-an-array-after-marking-all-elements">2593 - Find Score of An Array After Marking All Elements</a>
+      <ul>
+        <li><a href="#problem-statement">Problem statement</a></li>
+        <li><a href="#thoughts">Thoughts</a></li>
+        <li><a href="#submissions-results">Submissions Results</a></li>
+        <li><a href="#references">References:</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
+  DP Level 1
+  #
+
+Let’s dive into this LeetCode problem to uncover the foundational concepts of dynamic programming. Together, we’ll explore the key techniques and data structures specific to DP that will help you approach and solve it effectively.
+
+  2466. Count Ways To Build Good Strings
+  #
+
+
+Level medium.
+
+
+  Problem statement
+  #
+
+Given the integers zero, one, low, and high, we can construct a string by starting with an empty string, and then at each step perform either of the following:">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/dynamic-programming-problems/dp-level-1/">
+  <meta property="og:site_name" content="A Journey Through DS and Algorithms">
+  <meta property="og:title" content="DP Level 1">
+  <meta property="og:description" content="DP Level 1#Let’s dive into this LeetCode problem to uncover the foundational concepts of dynamic programming. Together, we’ll explore the key techniques and data structures specific to DP that will help you approach and solve it effectively.
+2466. Count Ways To Build Good Strings#Level medium. Problem statement#Given the integers zero, one, low, and high, we can construct a string by starting with an empty string, and then at each step perform either of the following:">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="dynamic-programming-problems">
+<title>DP Level 1 | A Journey Through DS and Algorithms</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1313/dynamic-programming-problems/dp-level-1/">
+<link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/en.search.min.07012d9737c568364f8ea7e782c3daeefaf0ad0080fbf5b6d3398429ad7a3f78.js" integrity="sha256-BwEtlzfFaDZPjqfngsPa7vrwrQCA&#43;/W20zmEKa16P3g=" crossorigin="anonymous"></script>
+
+<link rel="stylesheet" href="/katex/katex.min.css">
+<script defer src="/katex/katex.min.js"></script>
+<script defer src="/katex/auto-render.min.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    renderMathInElement(document.body, {
+      delimiters: [
+        { left: "$$", right: "$$", display: true },
+        { left: "$", right: "$", display: false }
+      ]
+    });
+  });
+</script>
+
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>A Journey Through DS and Algorithms</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/searching-and-sorting/" class="">Searching And Sorting Problems</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/searching-and-sorting/easy-sort-problem/" class="">Easy Sort Problem</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/data-structures/" class="">Data Structures Problems</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/data-structures/dequeue/" class="">Dequeue</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/data-structures/graphs/" class="">Graphs</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/data-structures/segment-tree/" class="">Segment Tree</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/dynamic-programming-problems/" class="">Dynamic Programming Problems</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/dynamic-programming-problems/dp-level-1/" class="active">DP Level 1</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/dynamic-programming-problems/dp-level-2/" class="">DP Level 2</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/math/" class="">Math Problems</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/math/arithmetic-counting-and-modulus/" class="">Arithmetic, counting and modulus operations</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/math/legendres-formula/" class="">Legendre&#39;s Formula</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/math/modular-exponentiation/" class="">Modular Exponentiation</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/math/fermats-little-theorem/" class="">Fermat&#39;s little Theorem</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>DP Level 1</h3>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#2466-count-ways-to-build-good-strings">2466. Count Ways To Build Good Strings</a>
+      <ul>
+        <li><a href="#problem-statement">Problem statement</a></li>
+        <li><a href="#first-thoughts">First Thoughts</a></li>
+        <li><a href="#dp-approach">DP approach</a></li>
+        <li><a href="#conclusion">Conclusion</a></li>
+        <li><a href="#references">References</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="dp-level-1">
+  DP Level 1
+  <a class="anchor" href="#dp-level-1">#</a>
+</h1>
+<p>Let’s dive into this LeetCode problem to uncover the foundational concepts of dynamic programming. Together, we’ll explore the key techniques and data structures specific to DP that will help you approach and solve it effectively.</p>
+<h2 id="2466-count-ways-to-build-good-strings">
+  2466. Count Ways To Build Good Strings
+  <a class="anchor" href="#2466-count-ways-to-build-good-strings">#</a>
+</h2>
+<ul>
+<li>Level <code>medium</code>.</li>
+</ul>
+<h3 id="problem-statement">
+  Problem statement
+  <a class="anchor" href="#problem-statement">#</a>
+</h3>
+<p>Given the integers <code>zero</code>, <code>one</code>, <code>low</code>, and <code>high</code>, we can construct a string by starting with an empty string, and then at each step perform either of the following:</p>
+<ul>
+<li>Append the character &lsquo;0&rsquo; <code>zero</code> times.</li>
+<li>Append the character &lsquo;1&rsquo; <code>one</code> times.
+This can be performed any number of times.</li>
+</ul>
+<p>A good string is a string constructed by the above process having a length between low and high (inclusive).</p>
+<p>Return the number of different <strong>good strings</strong> that can be constructed satisfying these properties. Since the answer can be <strong>large</strong>, return it modulo $10^9 + 7$.</p>
+<h4 id="example-1">
+  Example 1:
+  <a class="anchor" href="#example-1">#</a>
+</h4>
+<pre tabindex="0"><code>Input: low = 3, high = 3, zero = 1, one = 1
+Output: 8
+</code></pre><p>Explanation:</p>
+<ul>
+<li>One possible valid good string is &ldquo;011&rdquo;.</li>
+<li>It can be constructed as follows: &quot;&quot; -&gt; &ldquo;0&rdquo; -&gt; &ldquo;01&rdquo; -&gt; &ldquo;011&rdquo;.</li>
+<li>All binary strings from &ldquo;000&rdquo; to &ldquo;111&rdquo; are good strings in this example.</li>
+</ul>
+<h4 id="example-2">
+  Example 2:
+  <a class="anchor" href="#example-2">#</a>
+</h4>
+<pre tabindex="0"><code>Input: low = 2, high = 3, zero = 1, one = 2
+Output: 5
+</code></pre><p>Explanation:</p>
+<ul>
+<li>The good strings are &ldquo;00&rdquo;, &ldquo;11&rdquo;, &ldquo;000&rdquo;, &ldquo;110&rdquo;, and &ldquo;011&rdquo;.</li>
+</ul>
+<h4 id="constraints">
+  Constraints:
+  <a class="anchor" href="#constraints">#</a>
+</h4>
+<ul>
+<li>$1 \le low \le high \le 10^5$</li>
+<li>$1 \le zero, one \le low$</li>
+</ul>
+<h3 id="first-thoughts">
+  First Thoughts
+  <a class="anchor" href="#first-thoughts">#</a>
+</h3>
+<p>My first approach was a recursive solution because, for me, it’s more intuitive to visualize the relationship and structure between the branches of each node.
+Here’s the code:</p>
+<div class="highlight"><pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#008000;font-weight:bold">class</span> <span style="color:#00f;font-weight:bold">Solution</span> {
+</span></span><span style="display:flex;"><span><span style="color:#008000;font-weight:bold">public</span><span style="color:#666">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#b00040">int</span> low, high, zero, one;
+</span></span><span style="display:flex;"><span>    <span style="color:#b00040">int</span> ans <span style="color:#666">=</span> <span style="color:#666">0</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#b00040">void</span> <span style="color:#00f">f</span>(<span style="color:#b00040">int</span> sz, string<span style="color:#666">&amp;</span> s){
+</span></span><span style="display:flex;"><span>        <span style="color:#008000;font-weight:bold">if</span>(sz <span style="color:#666">&gt;=</span> low <span style="color:#666">&amp;&amp;</span> sz <span style="color:#666">&lt;=</span> high){
+</span></span><span style="display:flex;"><span>            cout <span style="color:#666">&lt;&lt;</span><span style="color:#ba2121">&#34;permutation:&#34;</span> <span style="color:#666">&lt;&lt;</span> s <span style="color:#666">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>            ans<span style="color:#666">++</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#008000;font-weight:bold">if</span>(sz <span style="color:#666">&gt;</span> high){
+</span></span><span style="display:flex;"><span>            <span style="color:#008000;font-weight:bold">return</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#008000;font-weight:bold">for</span>(<span style="color:#b00040">int</span> k<span style="color:#666">=</span><span style="color:#666">1</span>;k<span style="color:#666">&lt;=</span>zero;k<span style="color:#666">++</span>) s.push_back(<span style="color:#ba2121">&#39;0&#39;</span>);
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        f(sz<span style="color:#666">+</span>zero, s);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#008000;font-weight:bold">for</span>(<span style="color:#b00040">int</span> k<span style="color:#666">=</span><span style="color:#666">1</span>;k<span style="color:#666">&lt;=</span>zero;k<span style="color:#666">++</span>) s.pop_back();
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#008000;font-weight:bold">for</span>(<span style="color:#b00040">int</span> k<span style="color:#666">=</span><span style="color:#666">1</span>;k<span style="color:#666">&lt;=</span>one;k<span style="color:#666">++</span>) s.push_back(<span style="color:#ba2121">&#39;1&#39;</span>);
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        f(sz<span style="color:#666">+</span>one, s);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#008000;font-weight:bold">for</span>(<span style="color:#b00040">int</span> k<span style="color:#666">=</span><span style="color:#666">1</span>;k<span style="color:#666">&lt;=</span>one;k<span style="color:#666">++</span>) s.pop_back();
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#b00040">int</span> <span style="color:#00f">countGoodStrings</span>(<span style="color:#b00040">int</span> low, <span style="color:#b00040">int</span> high, <span style="color:#b00040">int</span> zero, <span style="color:#b00040">int</span> one) {
+</span></span><span style="display:flex;"><span>        <span style="color:#008000;font-weight:bold">this</span><span style="color:#666">-&gt;</span>low <span style="color:#666">=</span> low;
+</span></span><span style="display:flex;"><span>        <span style="color:#008000;font-weight:bold">this</span><span style="color:#666">-&gt;</span>high <span style="color:#666">=</span> high;
+</span></span><span style="display:flex;"><span>        <span style="color:#008000;font-weight:bold">this</span><span style="color:#666">-&gt;</span>zero <span style="color:#666">=</span> zero;
+</span></span><span style="display:flex;"><span>        <span style="color:#008000;font-weight:bold">this</span><span style="color:#666">-&gt;</span>one <span style="color:#666">=</span> one;
+</span></span><span style="display:flex;"><span>        string permutation <span style="color:#666">=</span> <span style="color:#ba2121">&#34;&#34;</span>;
+</span></span><span style="display:flex;"><span>        f(<span style="color:#666">0</span>, permutation);
+</span></span><span style="display:flex;"><span>        <span style="color:#008000;font-weight:bold">return</span> ans;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><ul>
+<li>The code works, but the time complexity is terrible, around $O(2^n)$. Also, don’t forget that for each node, I add a <code>char</code> (either <code>one</code> or <code>zero</code> times) to a string for debugging purposes.</li>
+<li>The first thing to notice is that the structure of the solution is consistent (<strong>same</strong>), which is why I can use a <code>f(sz)</code> function.</li>
+<li>The second observation is that we always move forward because, in the future, I’ll have the complete solution.</li>
+<li>To create the new node or determine the next step of the algorithm, I only need to calculate or process the current state.</li>
+<li>The <code>low</code> and <code>high</code> variables act as constraints.</li>
+<li>The <code>zero</code> and <code>one</code> variables represent the steps or jumps needed to reach the next feasible node.</li>
+</ul>
+<p>With all this information, I can build the DP approach.</p>
+<h3 id="dp-approach">
+  DP approach
+  <a class="anchor" href="#dp-approach">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#008000;font-weight:bold">class</span> <span style="color:#00f;font-weight:bold">Solution</span> {
+</span></span><span style="display:flex;"><span><span style="color:#008000;font-weight:bold">public</span><span style="color:#666">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#008000;font-weight:bold">const</span> <span style="color:#b00040">int</span> MOD <span style="color:#666">=</span> <span style="color:#666">1e9</span> <span style="color:#666">+</span> <span style="color:#666">7</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#b00040">int</span> <span style="color:#00f">countGoodStrings</span>(<span style="color:#b00040">int</span> low, <span style="color:#b00040">int</span> high, <span style="color:#b00040">int</span> zero, <span style="color:#b00040">int</span> one) {
+</span></span><span style="display:flex;"><span>        vector<span style="color:#666">&lt;</span><span style="color:#b00040">long</span> <span style="color:#b00040">long</span><span style="color:#666">&gt;</span> dp(high <span style="color:#666">+</span> max(one, zero) <span style="color:#666">+</span> <span style="color:#666">1</span>, <span style="color:#666">0</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#008000;font-weight:bold">for</span>(<span style="color:#b00040">int</span> i<span style="color:#666">=</span>low; i<span style="color:#666">&lt;=</span>high;i<span style="color:#666">++</span>){
+</span></span><span style="display:flex;"><span>            dp[i] <span style="color:#666">=</span> <span style="color:#666">1</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#008000;font-weight:bold">for</span>(<span style="color:#b00040">int</span> sz<span style="color:#666">=</span>high;sz<span style="color:#666">&gt;=</span><span style="color:#666">0</span>;sz<span style="color:#666">--</span>){
+</span></span><span style="display:flex;"><span>            dp[sz] <span style="color:#666">=</span> dp[sz] <span style="color:#666">%</span> MOD <span style="color:#666">+</span> dp[sz<span style="color:#666">+</span>one] <span style="color:#666">%</span> MOD <span style="color:#666">+</span> dp[sz<span style="color:#666">+</span>zero] <span style="color:#666">%</span> MOD;
+</span></span><span style="display:flex;"><span>            dp[sz] <span style="color:#666">%=</span> MOD;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#008000;font-weight:bold">return</span> dp[<span style="color:#666">0</span>];
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><ul>
+<li>What’s my base case? I only have an answer if <code>sz</code> is between <code>low</code> and <code>high</code> inclusive. So, i record that information in my <code>dp</code>.</li>
+<li>If you look at my implementation, it uses the same order of processing as the previous recursive solution. I need all the paths where <code>sz+one</code> and <code>sz+zero</code> have answer $&gt;0$.</li>
+<li>Therefore, <code>dp[sz]</code> is defined as the number of ways I can build a valid string with size <code>sz</code>.</li>
+</ul>
+<h3 id="conclusion">
+  Conclusion
+  <a class="anchor" href="#conclusion">#</a>
+</h3>
+<ul>
+<li>Finally, we can construct <code>dp</code> either from bottom-up or top-down. The main goal is to capture the patterns and relationships between the DP states.</li>
+<li>If you can create a recursive approach, you can transform it into an iterative approach by thinking in a DP manner.</li>
+</ul>
+<h3 id="references">
+  References
+  <a class="anchor" href="#references">#</a>
+</h3>
+<ul>
+<li>Problem: <a href="https://leetcode.com/problems/count-ways-to-build-good-strings/?envType=daily-question&amp;envId=2024-12-30">https://leetcode.com/problems/count-ways-to-build-good-strings/?envType=daily-question&envId=2024-12-30</a></li>
+</ul>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#2466-count-ways-to-build-good-strings">2466. Count Ways To Build Good Strings</a>
+      <ul>
+        <li><a href="#problem-statement">Problem statement</a></li>
+        <li><a href="#first-thoughts">First Thoughts</a></li>
+        <li><a href="#dp-approach">DP approach</a></li>
+        <li><a href="#conclusion">Conclusion</a></li>
+        <li><a href="#references">References</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
