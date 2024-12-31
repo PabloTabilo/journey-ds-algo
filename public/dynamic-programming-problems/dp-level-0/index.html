@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
+  DP Level 0
+  #
+
+Dynamic Programming (DP) problems generally involve the optimization of some discrete problem. This means that the solution typically revolves around breaking the problem into smaller subproblems, solving each of them, and combining the results to find the best possible answer.
+The objective of this problem is to find the minimum cost while adhering to the given rules for valid passes.
+
+  983. Minimum Cost For Tickets
+  #
+
+
+Level medium.
+
+
+  Problem statement
+  #
+
+You have planned some train traveling one year in advance. The days of the year in which you will travel are given as an integer array days. Each day is an integer from 1 to 365.">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/dynamic-programming-problems/dp-level-0/">
+  <meta property="og:site_name" content="A Journey Through DS and Algorithms">
+  <meta property="og:title" content="DP Level 0">
+  <meta property="og:description" content="DP Level 0#Dynamic Programming (DP) problems generally involve the optimization of some discrete problem. This means that the solution typically revolves around breaking the problem into smaller subproblems, solving each of them, and combining the results to find the best possible answer.
+The objective of this problem is to find the minimum cost while adhering to the given rules for valid passes.
+983. Minimum Cost For Tickets#Level medium. Problem statement#You have planned some train traveling one year in advance. The days of the year in which you will travel are given as an integer array days. Each day is an integer from 1 to 365.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="dynamic-programming-problems">
+<title>DP Level 0 | A Journey Through DS and Algorithms</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1313/dynamic-programming-problems/dp-level-0/">
+<link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/en.search.min.45b0b4f4718bc466b487a2e3c5069019d28f3e2c372e11428b7d2706e46ecd73.js" integrity="sha256-RbC09HGLxGa0h6LjxQaQGdKPPiw3LhFCi30nBuRuzXM=" crossorigin="anonymous"></script>
+
+<link rel="stylesheet" href="/katex/katex.min.css">
+<script defer src="/katex/katex.min.js"></script>
+<script defer src="/katex/auto-render.min.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    renderMathInElement(document.body, {
+      delimiters: [
+        { left: "$$", right: "$$", display: true },
+        { left: "$", right: "$", display: false }
+      ]
+    });
+  });
+</script>
+
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>A Journey Through DS and Algorithms</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/searching-and-sorting/" class="">Searching And Sorting Problems</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/searching-and-sorting/easy-sort-problem/" class="">Easy Sort Problem</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/dynamic-programming-problems/" class="">Dynamic Programming Problems</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/dynamic-programming-problems/dp-level-0/" class="active">DP Level 0</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/dynamic-programming-problems/dp-level-1/" class="">DP Level 1</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/dynamic-programming-problems/dp-level-2/" class="">DP Level 2</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/data-structures/" class="">Data Structures Problems</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/data-structures/dequeue/" class="">Dequeue</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/data-structures/graphs/" class="">Graphs</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/data-structures/segment-tree/" class="">Segment Tree</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/math/" class="">Math Problems</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/math/arithmetic-counting-and-modulus/" class="">Arithmetic, counting and modulus operations</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/math/legendres-formula/" class="">Legendre&#39;s Formula</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/math/modular-exponentiation/" class="">Modular Exponentiation</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/math/fermats-little-theorem/" class="">Fermat&#39;s little Theorem</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>DP Level 0</h3>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#983-minimum-cost-for-tickets">983. Minimum Cost For Tickets</a>
+      <ul>
+        <li><a href="#problem-statement">Problem statement</a></li>
+        <li><a href="#first-thoughts">First Thoughts</a></li>
+        <li><a href="#dp-approach">DP approach</a></li>
+        <li><a href="#conclusion">Conclusion</a></li>
+        <li><a href="#references">References</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="dp-level-0">
+  DP Level 0
+  <a class="anchor" href="#dp-level-0">#</a>
+</h1>
+<p>Dynamic Programming (DP) problems generally involve the optimization of some discrete problem. This means that the solution typically revolves around breaking the problem into smaller subproblems, solving each of them, and combining the results to find the best possible answer.</p>
+<p>The objective of this problem is to find the <strong>minimum cost</strong> while adhering to the given rules for valid passes.</p>
+<h2 id="983-minimum-cost-for-tickets">
+  983. Minimum Cost For Tickets
+  <a class="anchor" href="#983-minimum-cost-for-tickets">#</a>
+</h2>
+<ul>
+<li>Level <code>medium</code>.</li>
+</ul>
+<h3 id="problem-statement">
+  Problem statement
+  <a class="anchor" href="#problem-statement">#</a>
+</h3>
+<p>You have planned some train traveling one year in advance. The days of the year in which you will travel are given as an integer array <code>days</code>. Each day is an integer from <code>1</code> to <code>365</code>.</p>
+<p>Train tickets are sold in <strong>three different ways</strong>:</p>
+<ul>
+<li>a 1-day pass is sold for <code>costs[0]</code> dollars,</li>
+<li>a 7-day pass is sold for <code>costs[1]</code> dollars, and</li>
+<li>a 30-day pass is sold for <code>costs[2]</code> dollars.</li>
+</ul>
+<p>The passes allow that many days of consecutive travel.</p>
+<ul>
+<li>For example, if we get a 7-day pass on day <code>2</code>, then we can travel for <code>7</code> days: <code>2</code>, <code>3</code>, <code>4</code>, <code>5</code>, <code>6</code>, <code>7</code>, and <code>8</code>.</li>
+</ul>
+<p>Return the <em>minimum number of dollars you need</em> to travel every day in the given list of days.</p>
+<h4 id="example-1">
+  Example 1:
+  <a class="anchor" href="#example-1">#</a>
+</h4>
+<pre tabindex="0"><code>Input: days = [1,4,6,7,8,20], costs = [2,7,15]
+Output: 11
+</code></pre><p>Explanation: For example, here is one way to buy passes that lets you travel your travel plan:</p>
+<ul>
+<li>On day 1, you bought a 1-day pass for <code>costs[0] = $2</code>, which covered day 1.</li>
+<li>On day 3, you bought a 7-day pass for <code>costs[1] = $7</code>, which covered days 3, 4, &hellip;, 9.</li>
+<li>On day 20, you bought a 1-day pass for <code>costs[0] = $2</code>, which covered day 20.</li>
+</ul>
+<p>In total, you spent $11 and covered all the days of your travel.`</p>
+<h4 id="example-2">
+  Example 2:
+  <a class="anchor" href="#example-2">#</a>
+</h4>
+<pre tabindex="0"><code>Input: days = [1,2,3,4,5,6,7,8,9,10,30,31], costs = [2,7,15]
+Output: 17
+</code></pre><p>Explanation: For example, here is one way to buy passes that lets you travel your travel plan:</p>
+<ul>
+<li>On day 1, you bought a 30-day pass for <code>costs[2] = $15</code> which covered days 1, 2, &hellip;, 30.</li>
+<li>On day 31, you bought a 1-day pass for <code>costs[0] = $2</code> which covered day 31.</li>
+</ul>
+<p>In total, you spent $17 and covered all the days of your travel.</p>
+<h4 id="constraints">
+  Constraints:
+  <a class="anchor" href="#constraints">#</a>
+</h4>
+<ul>
+<li>1 &lt;= <code>days.length</code> &lt;= 365</li>
+<li>1 &lt;= <code>days[i]</code> &lt;= 365</li>
+<li><code>costs.length</code> == 3</li>
+<li>1 &lt;= <code>costs[i]</code> &lt;= 1000</li>
+</ul>
+<h3 id="first-thoughts">
+  First Thoughts
+  <a class="anchor" href="#first-thoughts">#</a>
+</h3>
+<ul>
+<li>The first thing to consider is how to iterate over the <code>vector&lt;int&gt; days</code>. It must be sorted because we need to process some days before others.</li>
+<li>The second thing is that the problem gives us options. We have four choices: take a 1-day pass, a 7-day pass, a 30-day pass, or skip the current day if it’s not in the <code>vector&lt;int&gt; days</code>.</li>
+<li>The third thing is that we need to minimize a cost function using the information stored in <code>vector&lt;int&gt; costs</code>.</li>
+<li>With these characteristics, I can implement a solution using a recursive approach.</li>
+</ul>
+<p>Here’s the code:</p>
+<div class="highlight"><pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#008000;font-weight:bold">class</span> <span style="color:#00f;font-weight:bold">Solution</span> {
+</span></span><span style="display:flex;"><span><span style="color:#008000;font-weight:bold">public</span><span style="color:#666">:</span>
+</span></span><span style="display:flex;"><span>    vector<span style="color:#666">&lt;</span><span style="color:#b00040">bool</span><span style="color:#666">&gt;</span> mustBuy;
+</span></span><span style="display:flex;"><span>    <span style="color:#b00040">int</span> n;
+</span></span><span style="display:flex;"><span>    <span style="color:#b00040">int</span> <span style="color:#00f">f</span>(<span style="color:#b00040">int</span> d, vector<span style="color:#666">&lt;</span><span style="color:#b00040">int</span><span style="color:#666">&gt;&amp;</span> days, vector<span style="color:#666">&lt;</span><span style="color:#b00040">int</span><span style="color:#666">&gt;&amp;</span> costs){
+</span></span><span style="display:flex;"><span>        <span style="color:#008000;font-weight:bold">if</span>(d <span style="color:#666">&gt;</span> days[n<span style="color:#666">-</span><span style="color:#666">1</span>]) <span style="color:#008000;font-weight:bold">return</span> <span style="color:#666">0</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#008000;font-weight:bold">if</span>(<span style="color:#666">!</span>mustBuy[d]){
+</span></span><span style="display:flex;"><span>            <span style="color:#008000;font-weight:bold">return</span> f(d<span style="color:#666">+</span><span style="color:#666">1</span>, days, costs);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#b00040">int</span> best <span style="color:#666">=</span> INT_MAX;
+</span></span><span style="display:flex;"><span>        <span style="color:#b00040">int</span> op1 <span style="color:#666">=</span> costs[<span style="color:#666">0</span>] <span style="color:#666">+</span> f(d<span style="color:#666">+</span><span style="color:#666">1</span>, days, costs);
+</span></span><span style="display:flex;"><span>        <span style="color:#b00040">int</span> op2 <span style="color:#666">=</span> costs[<span style="color:#666">1</span>] <span style="color:#666">+</span> f(d<span style="color:#666">+</span><span style="color:#666">7</span>, days, costs);
+</span></span><span style="display:flex;"><span>        <span style="color:#b00040">int</span> op3 <span style="color:#666">=</span> costs[<span style="color:#666">2</span>] <span style="color:#666">+</span> f(d<span style="color:#666">+</span><span style="color:#666">30</span>, days, costs);
+</span></span><span style="display:flex;"><span>        best <span style="color:#666">=</span> min(best, op1);
+</span></span><span style="display:flex;"><span>        best <span style="color:#666">=</span> min(best, op2);
+</span></span><span style="display:flex;"><span>        best <span style="color:#666">=</span> min(best, op3);
+</span></span><span style="display:flex;"><span>        <span style="color:#008000;font-weight:bold">return</span> best;    
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#b00040">int</span> <span style="color:#00f">mincostTickets</span>(vector<span style="color:#666">&lt;</span><span style="color:#b00040">int</span><span style="color:#666">&gt;&amp;</span> days, vector<span style="color:#666">&lt;</span><span style="color:#b00040">int</span><span style="color:#666">&gt;&amp;</span> costs) {
+</span></span><span style="display:flex;"><span>        mustBuy.resize(<span style="color:#666">366</span>,<span style="color:#008000">false</span>);
+</span></span><span style="display:flex;"><span>        sort(days.begin(), days.end());
+</span></span><span style="display:flex;"><span>        <span style="color:#008000;font-weight:bold">this</span><span style="color:#666">-&gt;</span>n <span style="color:#666">=</span> days.size();
+</span></span><span style="display:flex;"><span>        <span style="color:#008000;font-weight:bold">for</span>(<span style="color:#b00040">int</span> <span style="color:#a0a000">d</span> : days) mustBuy[d] <span style="color:#666">=</span> <span style="color:#008000">true</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#008000;font-weight:bold">return</span> f(days[<span style="color:#666">0</span>], days, costs);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><ul>
+<li>Why use <code>vector&lt;bool&gt; mustBuy</code>? It’s a boolean vector that keeps track of whether a specific day needs to be processed or not.</li>
+<li>The code works, but the time complexity is terrible, around $O(3^n)$, where $n$ can be as large as 365.</li>
+<li>The first thing to notice is the <strong>structure</strong> of the problem/solution is consistent—it’s the <strong>same</strong> for each <strong>subproblem</strong>. To solve the problem for day <code>d</code>, I need to check if it’s a valid day in <code>vector&lt;int&gt; days</code> and calculate the three cost options.</li>
+<li>The second observation is that we always move forward because, in the future, I’ll have the complete solution.</li>
+<li>The base case exists in the future. For this reason: <code>if(d &gt; days[n-1]) return 0;</code></li>
+</ul>
+<p>With all this information, I can build the DP approach.</p>
+<h3 id="dp-approach">
+  DP approach
+  <a class="anchor" href="#dp-approach">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#008000;font-weight:bold">class</span> <span style="color:#00f;font-weight:bold">Solution</span> {
+</span></span><span style="display:flex;"><span><span style="color:#008000;font-weight:bold">public</span><span style="color:#666">:</span>
+</span></span><span style="display:flex;"><span>    vector<span style="color:#666">&lt;</span><span style="color:#b00040">bool</span><span style="color:#666">&gt;</span> mustBuy;
+</span></span><span style="display:flex;"><span>    <span style="color:#b00040">int</span> n;
+</span></span><span style="display:flex;"><span>    <span style="color:#b00040">int</span> <span style="color:#00f">mincostTickets</span>(vector<span style="color:#666">&lt;</span><span style="color:#b00040">int</span><span style="color:#666">&gt;&amp;</span> days, vector<span style="color:#666">&lt;</span><span style="color:#b00040">int</span><span style="color:#666">&gt;&amp;</span> costs) {
+</span></span><span style="display:flex;"><span>        mustBuy.resize(<span style="color:#666">366</span>,<span style="color:#008000">false</span>);
+</span></span><span style="display:flex;"><span>        sort(days.begin(), days.end());
+</span></span><span style="display:flex;"><span>        <span style="color:#008000;font-weight:bold">this</span><span style="color:#666">-&gt;</span>n <span style="color:#666">=</span> days.size();
+</span></span><span style="display:flex;"><span>        <span style="color:#008000;font-weight:bold">for</span>(<span style="color:#b00040">int</span> <span style="color:#a0a000">d</span> : days) mustBuy[d] <span style="color:#666">=</span> <span style="color:#008000">true</span>;
+</span></span><span style="display:flex;"><span>        vector<span style="color:#666">&lt;</span><span style="color:#b00040">int</span><span style="color:#666">&gt;</span> dp(days[n<span style="color:#666">-</span><span style="color:#666">1</span>]<span style="color:#666">+</span><span style="color:#666">31</span>,INT_MAX);
+</span></span><span style="display:flex;"><span>        <span style="color:#008000;font-weight:bold">for</span>(<span style="color:#b00040">int</span> base<span style="color:#666">=</span>days[n<span style="color:#666">-</span><span style="color:#666">1</span>]<span style="color:#666">+</span><span style="color:#666">1</span>; base<span style="color:#666">&lt;</span> (days[n<span style="color:#666">-</span><span style="color:#666">1</span>]<span style="color:#666">+</span><span style="color:#666">31</span>); base<span style="color:#666">++</span>) dp[base] <span style="color:#666">=</span> <span style="color:#666">0</span>;
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#008000;font-weight:bold">for</span>(<span style="color:#b00040">int</span> d<span style="color:#666">=</span>days[n<span style="color:#666">-</span><span style="color:#666">1</span>];d<span style="color:#666">&gt;=</span><span style="color:#666">0</span>;d<span style="color:#666">--</span>){
+</span></span><span style="display:flex;"><span>            <span style="color:#008000;font-weight:bold">if</span>(<span style="color:#666">!</span>mustBuy[d]){
+</span></span><span style="display:flex;"><span>                dp[d] <span style="color:#666">=</span> dp[d<span style="color:#666">+</span><span style="color:#666">1</span>];
+</span></span><span style="display:flex;"><span>            }<span style="color:#008000;font-weight:bold">else</span>{
+</span></span><span style="display:flex;"><span>                dp[d] <span style="color:#666">=</span> min(dp[d], costs[<span style="color:#666">0</span>]<span style="color:#666">+</span>dp[d<span style="color:#666">+</span><span style="color:#666">1</span>]);
+</span></span><span style="display:flex;"><span>                dp[d] <span style="color:#666">=</span> min(dp[d], costs[<span style="color:#666">1</span>]<span style="color:#666">+</span>dp[d<span style="color:#666">+</span><span style="color:#666">7</span>]);
+</span></span><span style="display:flex;"><span>                dp[d] <span style="color:#666">=</span> min(dp[d], costs[<span style="color:#666">2</span>]<span style="color:#666">+</span>dp[d<span style="color:#666">+</span><span style="color:#666">30</span>]);
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#008000;font-weight:bold">return</span> dp[<span style="color:#666">0</span>];
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><ul>
+<li>What’s my base case? I know that after the last day available, the contribution to my cost function is 0. So, all days beyond the last day must have a cost of 0.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#008000;font-weight:bold">for</span>(<span style="color:#b00040">int</span> base<span style="color:#666">=</span>days[n<span style="color:#666">-</span><span style="color:#666">1</span>]<span style="color:#666">+</span><span style="color:#666">1</span>; base<span style="color:#666">&lt;</span> (days[n<span style="color:#666">-</span><span style="color:#666">1</span>]<span style="color:#666">+</span><span style="color:#666">31</span>); base<span style="color:#666">++</span>) dp[base] <span style="color:#666">=</span> <span style="color:#666">0</span>;
+</span></span></code></pre></div><ul>
+<li>In this case, what&rsquo;s my <code>dp[d]</code>? It&rsquo;s defined as the minimum cost from day <code>d</code> to the last day available <code>day[n-1]</code>.
+$$
+dp[d] =
+\begin{cases}
+dp[d+1], &amp; \text{if } \texttt{!mustBuy[d]} \\
+\min \left (
+\begin{matrix}
+dp[d], \\
+\texttt{costs}_0 + dp[d+1], \\
+\texttt{costs}_1 + dp[d+7], \\
+\texttt{costs}_2 + dp[d+30]
+\end{matrix}
+\right), &amp; \text{otherwise}
+\end{cases}
+$$</li>
+</ul>
+<h3 id="conclusion">
+  Conclusion
+  <a class="anchor" href="#conclusion">#</a>
+</h3>
+<ul>
+<li>Finally, we can construct <code>dp</code> either from bottom-up or top-down. The main goal is to capture the patterns and relationships between the DP states.</li>
+<li>If you can create a recursive approach, you can transform it into an iterative approach by thinking in a DP manner.</li>
+</ul>
+<h3 id="references">
+  References
+  <a class="anchor" href="#references">#</a>
+</h3>
+<ul>
+<li>Problem: <a href="https://leetcode.com/problems/minimum-cost-for-tickets/description/?envType=daily-question&amp;envId=2024-12-31">https://leetcode.com/problems/minimum-cost-for-tickets/description/?envType=daily-question&envId=2024-12-31</a></li>
+</ul>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#983-minimum-cost-for-tickets">983. Minimum Cost For Tickets</a>
+      <ul>
+        <li><a href="#problem-statement">Problem statement</a></li>
+        <li><a href="#first-thoughts">First Thoughts</a></li>
+        <li><a href="#dp-approach">DP approach</a></li>
+        <li><a href="#conclusion">Conclusion</a></li>
+        <li><a href="#references">References</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

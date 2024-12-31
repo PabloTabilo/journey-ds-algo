@@ -1,6 +1,6 @@
 ---
 title: "DP Level 1"
-weight: 1
+weight: 2
 ---
 # DP Level 1
 Let’s dive into this LeetCode problem to uncover the foundational concepts of dynamic programming. Together, we’ll explore the key techniques and data structures specific to DP that will help you approach and solve it effectively.
@@ -13,9 +13,10 @@ Given the integers `zero`, `one`, `low`, and `high`, we can construct a string b
 
 * Append the character '0' `zero` times.
 * Append the character '1' `one` times.
+
 This can be performed any number of times.
 
-A good string is a string constructed by the above process having a length between low and high (inclusive).
+A good string is a string constructed by the above process having a length between `low` and `high` (inclusive).
 
 Return the number of different __good strings__ that can be constructed satisfying these properties. Since the answer can be __large__, return it modulo $10^9 + 7$.
 

@@ -8,6 +8,13 @@
     <language>en-us</language>
     <atom:link href="http://localhost:1313/dynamic-programming-problems/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>DP Level 0</title>
+      <link>http://localhost:1313/dynamic-programming-problems/dp-level-0/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/dynamic-programming-problems/dp-level-0/</guid>
+      <description>&lt;h1 id=&#34;dp-level-0&#34;&gt;&#xD;&#xA;  DP Level 0&#xD;&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#dp-level-0&#34;&gt;#&lt;/a&gt;&#xD;&#xA;&lt;/h1&gt;&#xD;&#xA;&lt;p&gt;Dynamic Programming (DP) problems generally involve the optimization of some discrete problem. This means that the solution typically revolves around breaking the problem into smaller subproblems, solving each of them, and combining the results to find the best possible answer.&lt;/p&gt;&#xA;&lt;p&gt;The objective of this problem is to find the &lt;strong&gt;minimum cost&lt;/strong&gt; while adhering to the given rules for valid passes.&lt;/p&gt;&#xA;&lt;h2 id=&#34;983-minimum-cost-for-tickets&#34;&gt;&#xD;&#xA;  983. Minimum Cost For Tickets&#xD;&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#983-minimum-cost-for-tickets&#34;&gt;#&lt;/a&gt;&#xD;&#xA;&lt;/h2&gt;&#xD;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Level &lt;code&gt;medium&lt;/code&gt;.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h3 id=&#34;problem-statement&#34;&gt;&#xD;&#xA;  Problem statement&#xD;&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#problem-statement&#34;&gt;#&lt;/a&gt;&#xD;&#xA;&lt;/h3&gt;&#xD;&#xA;&lt;p&gt;You have planned some train traveling one year in advance. The days of the year in which you will travel are given as an integer array &lt;code&gt;days&lt;/code&gt;. Each day is an integer from &lt;code&gt;1&lt;/code&gt; to &lt;code&gt;365&lt;/code&gt;.&lt;/p&gt;</description>
+    </item>
+    <item>
       <title>DP Level 1</title>
       <link>http://localhost:1313/dynamic-programming-problems/dp-level-1/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
