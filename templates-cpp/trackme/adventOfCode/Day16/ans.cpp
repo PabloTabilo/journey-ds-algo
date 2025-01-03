@@ -30,7 +30,7 @@ int main(){
 	for(int x=0;x<WIDTH;x++){
 	    if(p[y][x] == 'S'){
 		start = {y, x};
-		prev[y][x] = 'S';
+		prev[y][x] = '>';
 		prevPos[y][x] = {y, x};
 		dist[y][x] = 0;
 		q.push({y, x});
@@ -42,7 +42,8 @@ int main(){
 	    }
 	}
     }
-    
+   
+    bool debugme = false;
 
     int dy[4] = {1, -1, 0, 0};
     int dx[4] = {0, 0, 1, -1};
@@ -54,13 +55,35 @@ int main(){
 	return '<';
     };
     
-    cout << "init puzzle" << endl;
-    for(auto y : p){
-	for(auto x: y){
-	    cout << x << " ";
+    auto degreeCost = [&](char c1, char c2){
+	if(c1 == c2) return 1;
+	if(c1 == '>'){
+	    if(c2 == '<') return 2001;
+	    return 1001;
 	}
-	cout << endl;
+	else if(c1 == '^'){
+	    if(c2 == 'v') return 2001;
+	    return 1001;
+	}
+	else if(c1 == '<'){
+	    if(c2 == '>') return 2001;
+	    return 1001;
+	}else{
+	    if(c2 == '^') return 2001;
+	    return 1001;
+	}
+    };
+
+    if(debugme){
+	cout << "init puzzle" << endl;
+	for(auto y : p){
+	    for(auto x: y){
+		cout << x << " ";
+	    }
+	    cout << endl;
+	}
     }
+
     while(!q.empty()){
 	auto [y, x] = q.front();
 	q.pop();
@@ -74,10 +97,11 @@ int main(){
 	    if(ny < 0 || nx < 0 || ny >= HEIGHT || nx >= WIDTH) continue;
 	    if(p[ny][nx] == '#') continue;
 	    
-	    int w = prev[y][x] == dirChar(k) ? 1 : 1001;
-	    if(p[y][x] == 'S'){
-		w = 1;
-	    }
+	    //int w = prev[y][x] == dirChar(k) ? 1 : 1001;
+	    int w = degreeCost(prev[y][x], dirChar(k));
+	    //if(p[y][x] == 'S' && dirChar(k) == '>'){
+		//w = 1;
+	    //}
 	    if(dist[ny][nx] > dist[y][x] + w){
 		if(p[ny][nx] != 'E') p[ny][nx] = dirChar(k);
 		dist[ny][nx] = dist[y][x] + w;
@@ -87,41 +111,45 @@ int main(){
 	    }
 	}
     }
-    
-    cout << "final puzzle" << endl;
-    for(auto y : p){
-	for(auto x: y){
-	    cout << x << " ";
+    if(debugme){
+	cout << "final puzzle" << endl;
+	for(auto y : p){
+	    for(auto x: y){
+		cout << x << " ";
+	    }
+	    cout << endl;
 	}
-	cout << endl;
-    }
-    
-    cout << "cost matrix" << endl;
-    for(auto y : dist){
-	for(auto x: y){
-	    if(x == INT_MAX) cout << "INF" << " ";
-	    else cout << x << " ";
+    } 
+    if(debugme){
+	cout << "cost matrix" << endl;
+	for(auto y : dist){
+	    for(auto x: y){
+		if(x == INT_MAX) cout << "INF" << " ";
+		else cout << x << " ";
+	    }
+	    cout << endl;
 	}
-	cout << endl;
-    }
+    }    
 
     cout << dist[end.first][end.second] << endl;
-    vector<pair<int, int> > path;
-    int y = end.first;
-    int x = end.second;
-    pair<int, int> pai;
-    while( !(y == start.first && x == start.second) ){
-	path.push_back({y, x});
-	pai = prevPos[y][x];
-	y = pai.first;
-	x = pai.second;
-    }
-    path.push_back({y, x});
-    
-    for(auto [yy, xx] : path){
-	cout << "{"<<yy<<","<<xx<<"} = " << p[yy][xx] << endl;
-    }
 
+    if(debugme){
+	vector<pair<int, int> > path;
+	int y = end.first;
+	int x = end.second;
+	pair<int, int> pai;
+	while( !(y == start.first && x == start.second) ){
+	    path.push_back({y, x});
+	    pai = prevPos[y][x];
+	    y = pai.first;
+	    x = pai.second;
+	}
+	path.push_back({y, x});
+	
+	for(auto [yy, xx] : path){
+	    cout << "{"<<yy<<","<<xx<<"} = " << p[yy][xx] << endl;
+	}
+    }
     return 0;
 }
 
