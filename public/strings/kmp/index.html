@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
+  KMP
+  #
+
+
+  Code
+  #
+
+class Solution {
+public:
+    bool kmp_substr(string &amp; s, int sz){
+        int n = s.length();
+        vector&lt;int&gt; pi_s(n, 0);
+        for(int i=1;i &lt; n;i&#43;&#43;){
+            int j = pi_s[i-1];
+            while(j &gt; 0 &amp;&amp; s[i] != s[j]){
+                j = pi_s[j-1];
+            }
+            if(s[i] == s[j]){
+                j&#43;&#43;;
+            }
+            pi_s[i] = j; 
+            if(j &gt;= sz){
+                return true;
+            }
+        }
+        return false;
+    }
+    vector&lt;string&gt; stringMatching(vector&lt;string&gt;&amp; words) {
+        auto comp = [](auto &amp;l, auto &amp;r){
+            if(l.length() != r.length()){
+                return l.length() &lt; r.length();
+            }
+            return l &lt; r;
+        };
+        sort(words.begin(), words.end(), comp);
+        //cout &lt;&lt; &#34;words:&#34;; for(auto x : words) cout &lt;&lt; x &lt;&lt; &#34; &#34;; cout &lt;&lt; endl;
+        int cnt = 0;
+        int n = words.size();
+        vector&lt;string&gt; ans;
+        string prev;
+        for(int i=0;i&lt;n;i&#43;&#43;){
+            string a = words[i];
+            if(prev == a) continue;
+            for(int j=i&#43;1;j&lt;n;j&#43;&#43;){
+                string b = words[j];
+                if(a.length() &gt; b.length()) break;
+                string t = a &#43; &#39;#&#39; &#43; b;
+                if(kmp_substr(t, a.length())){
+                    ans.push_back(a);
+                    break;
+                }
+            }
+            prev = a;
+        }
+        return ans;
+    }
+};
+
+  Interesting Articles
+  #
+
+
+https://cp-algorithms.com/string/prefix-function.html
+https://usaco.guide/adv/string-search?lang=cpp
+
+
+  References
+  #
+
+
+Problem: https://leetcode.com/problems/string-matching-in-an-array/?envType=daily-question&envId=2025-01-07
+">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/strings/kmp/">
+  <meta property="og:site_name" content="A Journey Through DS and Algorithms">
+  <meta property="og:title" content="Knuth-Morris-Pratt">
+  <meta property="og:description" content="KMP#Code#class Solution { public: bool kmp_substr(string &amp; s, int sz){ int n = s.length(); vector&lt;int&gt; pi_s(n, 0); for(int i=1;i &lt; n;i&#43;&#43;){ int j = pi_s[i-1]; while(j &gt; 0 &amp;&amp; s[i] != s[j]){ j = pi_s[j-1]; } if(s[i] == s[j]){ j&#43;&#43;; } pi_s[i] = j; if(j &gt;= sz){ return true; } } return false; } vector&lt;string&gt; stringMatching(vector&lt;string&gt;&amp; words) { auto comp = [](auto &amp;l, auto &amp;r){ if(l.length() != r.length()){ return l.length() &lt; r.length(); } return l &lt; r; }; sort(words.begin(), words.end(), comp); //cout &lt;&lt; &#34;words:&#34;; for(auto x : words) cout &lt;&lt; x &lt;&lt; &#34; &#34;; cout &lt;&lt; endl; int cnt = 0; int n = words.size(); vector&lt;string&gt; ans; string prev; for(int i=0;i&lt;n;i&#43;&#43;){ string a = words[i]; if(prev == a) continue; for(int j=i&#43;1;j&lt;n;j&#43;&#43;){ string b = words[j]; if(a.length() &gt; b.length()) break; string t = a &#43; &#39;#&#39; &#43; b; if(kmp_substr(t, a.length())){ ans.push_back(a); break; } } prev = a; } return ans; } }; Interesting Articles#https://cp-algorithms.com/string/prefix-function.html https://usaco.guide/adv/string-search?lang=cpp References#Problem: https://leetcode.com/problems/string-matching-in-an-array/?envType=daily-question&amp;envId=2025-01-07">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="strings">
+<title>Knuth-Morris-Pratt | A Journey Through DS and Algorithms</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1313/strings/kmp/">
+<link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/en.search.min.3b508d1ace1eb54c23ae0d38b2dcf72a0bf901ca5c41835ee5cbb303fd1e82da.js" integrity="sha256-O1CNGs4etUwjrg04stz3Kgv5AcpcQYNe5cuzA/0egto=" crossorigin="anonymous"></script>
+
+<link rel="stylesheet" href="/katex/katex.min.css">
+<script defer src="/katex/katex.min.js"></script>
+<script defer src="/katex/auto-render.min.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    renderMathInElement(document.body, {
+      delimiters: [
+        { left: "$$", right: "$$", display: true },
+        { left: "$", right: "$", display: false }
+      ]
+    });
+  });
+</script>
+
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>A Journey Through DS and Algorithms</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/searching-and-sorting/" class="">Searching And Sorting Problems</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/searching-and-sorting/easy-sort-problem/" class="">Easy Sort Problem</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/dynamic-programming-problems/" class="">Dynamic Programming Problems</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/dynamic-programming-problems/dp-level-0/" class="">DP Level 0</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/dynamic-programming-problems/dp-level-1/" class="">DP Level 1</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/dynamic-programming-problems/dp-level-2/" class="">DP Level 2</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/data-structures/" class="">Data Structures Problems</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/data-structures/dequeue/" class="">Dequeue</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/data-structures/graphs/" class="">Graphs</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/data-structures/segment-tree/" class="">Segment Tree</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/strings/" class="">Strings Problems</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/strings/kmp/" class="active">Knuth-Morris-Pratt</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/math/" class="">Math Problems</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/math/arithmetic-counting-and-modulus/" class="">Arithmetic, counting and modulus operations</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/math/legendres-formula/" class="">Legendre&#39;s Formula</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/math/modular-exponentiation/" class="">Modular Exponentiation</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/math/fermats-little-theorem/" class="">Fermat&#39;s little Theorem</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Knuth-Morris-Pratt</h3>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#code">Code</a>
+      <ul>
+        <li><a href="#interesting-articles">Interesting Articles</a></li>
+        <li><a href="#references">References</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="kmp">
+  KMP
+  <a class="anchor" href="#kmp">#</a>
+</h1>
+<h2 id="code">
+  Code
+  <a class="anchor" href="#code">#</a>
+</h2>
+<div class="highlight"><pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#008000;font-weight:bold">class</span> <span style="color:#00f;font-weight:bold">Solution</span> {
+</span></span><span style="display:flex;"><span><span style="color:#008000;font-weight:bold">public</span><span style="color:#666">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#b00040">bool</span> kmp_substr(string <span style="color:#666">&amp;</span> s, <span style="color:#b00040">int</span> sz){
+</span></span><span style="display:flex;"><span>        <span style="color:#b00040">int</span> n <span style="color:#666">=</span> s.length();
+</span></span><span style="display:flex;"><span>        vector<span style="color:#666">&lt;</span><span style="color:#b00040">int</span><span style="color:#666">&gt;</span> pi_s(n, <span style="color:#666">0</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#008000;font-weight:bold">for</span>(<span style="color:#b00040">int</span> i<span style="color:#666">=</span><span style="color:#666">1</span>;i <span style="color:#666">&lt;</span> n;i<span style="color:#666">++</span>){
+</span></span><span style="display:flex;"><span>            <span style="color:#b00040">int</span> j <span style="color:#666">=</span> pi_s[i<span style="color:#666">-</span><span style="color:#666">1</span>];
+</span></span><span style="display:flex;"><span>            <span style="color:#008000;font-weight:bold">while</span>(j <span style="color:#666">&gt;</span> <span style="color:#666">0</span> <span style="color:#666">&amp;&amp;</span> s[i] <span style="color:#666">!=</span> s[j]){
+</span></span><span style="display:flex;"><span>                j <span style="color:#666">=</span> pi_s[j<span style="color:#666">-</span><span style="color:#666">1</span>];
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>            <span style="color:#008000;font-weight:bold">if</span>(s[i] <span style="color:#666">==</span> s[j]){
+</span></span><span style="display:flex;"><span>                j<span style="color:#666">++</span>;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>            pi_s[i] <span style="color:#666">=</span> j; 
+</span></span><span style="display:flex;"><span>            <span style="color:#008000;font-weight:bold">if</span>(j <span style="color:#666">&gt;=</span> sz){
+</span></span><span style="display:flex;"><span>                <span style="color:#008000;font-weight:bold">return</span> <span style="color:#008000">true</span>;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#008000;font-weight:bold">return</span> <span style="color:#008000">false</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    vector<span style="color:#666">&lt;</span>string<span style="color:#666">&gt;</span> stringMatching(vector<span style="color:#666">&lt;</span>string<span style="color:#666">&gt;&amp;</span> words) {
+</span></span><span style="display:flex;"><span>        <span style="color:#008000;font-weight:bold">auto</span> comp <span style="color:#666">=</span> [](<span style="color:#008000;font-weight:bold">auto</span> <span style="color:#666">&amp;</span>l, <span style="color:#008000;font-weight:bold">auto</span> <span style="color:#666">&amp;</span>r){
+</span></span><span style="display:flex;"><span>            <span style="color:#008000;font-weight:bold">if</span>(l.length() <span style="color:#666">!=</span> r.length()){
+</span></span><span style="display:flex;"><span>                <span style="color:#008000;font-weight:bold">return</span> l.length() <span style="color:#666">&lt;</span> r.length();
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>            <span style="color:#008000;font-weight:bold">return</span> l <span style="color:#666">&lt;</span> r;
+</span></span><span style="display:flex;"><span>        };
+</span></span><span style="display:flex;"><span>        sort(words.begin(), words.end(), comp);
+</span></span><span style="display:flex;"><span>        <span style="color:#408080;font-style:italic">//cout &lt;&lt; &#34;words:&#34;; for(auto x : words) cout &lt;&lt; x &lt;&lt; &#34; &#34;; cout &lt;&lt; endl;
+</span></span></span><span style="display:flex;"><span><span style="color:#408080;font-style:italic"></span>        <span style="color:#b00040">int</span> cnt <span style="color:#666">=</span> <span style="color:#666">0</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#b00040">int</span> n <span style="color:#666">=</span> words.size();
+</span></span><span style="display:flex;"><span>        vector<span style="color:#666">&lt;</span>string<span style="color:#666">&gt;</span> ans;
+</span></span><span style="display:flex;"><span>        string prev;
+</span></span><span style="display:flex;"><span>        <span style="color:#008000;font-weight:bold">for</span>(<span style="color:#b00040">int</span> i<span style="color:#666">=</span><span style="color:#666">0</span>;i<span style="color:#666">&lt;</span>n;i<span style="color:#666">++</span>){
+</span></span><span style="display:flex;"><span>            string a <span style="color:#666">=</span> words[i];
+</span></span><span style="display:flex;"><span>            <span style="color:#008000;font-weight:bold">if</span>(prev <span style="color:#666">==</span> a) <span style="color:#008000;font-weight:bold">continue</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#008000;font-weight:bold">for</span>(<span style="color:#b00040">int</span> j<span style="color:#666">=</span>i<span style="color:#666">+</span><span style="color:#666">1</span>;j<span style="color:#666">&lt;</span>n;j<span style="color:#666">++</span>){
+</span></span><span style="display:flex;"><span>                string b <span style="color:#666">=</span> words[j];
+</span></span><span style="display:flex;"><span>                <span style="color:#008000;font-weight:bold">if</span>(a.length() <span style="color:#666">&gt;</span> b.length()) <span style="color:#008000;font-weight:bold">break</span>;
+</span></span><span style="display:flex;"><span>                string t <span style="color:#666">=</span> a <span style="color:#666">+</span> <span style="color:#ba2121">&#39;#&#39;</span> <span style="color:#666">+</span> b;
+</span></span><span style="display:flex;"><span>                <span style="color:#008000;font-weight:bold">if</span>(kmp_substr(t, a.length())){
+</span></span><span style="display:flex;"><span>                    ans.push_back(a);
+</span></span><span style="display:flex;"><span>                    <span style="color:#008000;font-weight:bold">break</span>;
+</span></span><span style="display:flex;"><span>                }
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>            prev <span style="color:#666">=</span> a;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#008000;font-weight:bold">return</span> ans;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><h3 id="interesting-articles">
+  Interesting Articles
+  <a class="anchor" href="#interesting-articles">#</a>
+</h3>
+<ul>
+<li><a href="https://cp-algorithms.com/string/prefix-function.html">https://cp-algorithms.com/string/prefix-function.html</a></li>
+<li><a href="https://usaco.guide/adv/string-search?lang=cpp">https://usaco.guide/adv/string-search?lang=cpp</a></li>
+</ul>
+<h3 id="references">
+  References
+  <a class="anchor" href="#references">#</a>
+</h3>
+<ul>
+<li>Problem: <a href="https://leetcode.com/problems/string-matching-in-an-array/?envType=daily-question&amp;envId=2025-01-07">https://leetcode.com/problems/string-matching-in-an-array/?envType=daily-question&envId=2025-01-07</a></li>
+</ul>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#code">Code</a>
+      <ul>
+        <li><a href="#interesting-articles">Interesting Articles</a></li>
+        <li><a href="#references">References</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
