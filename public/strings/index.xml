@@ -8,6 +8,13 @@
     <language>en-us</language>
     <atom:link href="http://localhost:1313/strings/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Rabin - Karp algorithm</title>
+      <link>http://localhost:1313/strings/rabinkarp/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/strings/rabinkarp/</guid>
+      <description>&lt;h1 id=&#34;rabin---karp-algorithm&#34;&gt;&#xD;&#xA;  Rabin - Karp Algorithm&#xD;&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#rabin---karp-algorithm&#34;&gt;#&lt;/a&gt;&#xD;&#xA;&lt;/h1&gt;&#xD;&#xA;&lt;p&gt;The Rabin-Karp algorithm solves problems involving pattern matching within a string, where the complexity largely depends on the hash function used. This algorithm utilizes &lt;strong&gt;rolling hashing&lt;/strong&gt; for string searching.&lt;/p&gt;&#xA;&lt;p&gt;But what is rolling hashing?&lt;/p&gt;&#xA;&lt;h2 id=&#34;rolling-hashing&#34;&gt;&#xD;&#xA;  Rolling Hashing&#xD;&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#rolling-hashing&#34;&gt;#&lt;/a&gt;&#xD;&#xA;&lt;/h2&gt;&#xD;&#xA;&lt;p&gt;In simple terms, rolling hashing is a technique used to compute hash values efficiently for substrings of a string. It uses a sliding window approach, where the next window&amp;rsquo;s hash is updated based on the previous window instead of being recomputed from scratch.&lt;/p&gt;</description>
+    </item>
+    <item>
       <title>Knuth-Morris-Pratt</title>
       <link>http://localhost:1313/strings/kmp/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>

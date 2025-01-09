@@ -11,6 +11,9 @@
     <loc>http://localhost:1313/searching-and-sorting/easy-sort-problem/</loc>
     <lastmod>2024-12-13T10:50:58-03:00</lastmod>
   </url><url>
+    <loc>http://localhost:1313/strings/kmp/</loc>
+    <lastmod>2025-01-07T19:56:06-03:00</lastmod>
+  </url><url>
     <loc>http://localhost:1313/searching-and-sorting/</loc>
     <lastmod>2024-12-30T20:24:10-03:00</lastmod>
   </url><url>
@@ -26,19 +29,22 @@
     <loc>http://localhost:1313/data-structures/</loc>
     <lastmod>2024-12-30T20:28:44-03:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/strings/</loc>
-  </url><url>
     <loc>http://localhost:1313/dynamic-programming-problems/dp-level-2/</loc>
     <lastmod>2024-12-31T01:58:45-03:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/math/modular-exponentiation/</loc>
     <lastmod>2024-12-10T14:09:37-03:00</lastmod>
   </url><url>
+    <loc>http://localhost:1313/strings/</loc>
+    <lastmod>2025-01-07T19:56:06-03:00</lastmod>
+  </url><url>
     <loc>http://localhost:1313/math/fermats-little-theorem/</loc>
     <lastmod>2024-12-10T14:09:37-03:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/math/</loc>
     <lastmod>2024-12-30T20:24:10-03:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/strings/rabinkarp/</loc>
   </url><url>
     <loc>http://localhost:1313/categories/</loc>
   </url><url>

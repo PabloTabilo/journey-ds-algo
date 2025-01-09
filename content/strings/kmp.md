@@ -1,6 +1,6 @@
 ---
 title: "Knuth-Morris-Pratt"
-weight: 1
+weight: 2
 ---
 # KMP
 
