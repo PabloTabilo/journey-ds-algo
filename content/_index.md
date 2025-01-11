@@ -10,4 +10,5 @@ Various algorithm and data structure implementations discovered while participat
 - [Searching and Sorting Problems](searching-and-sorting/)
 - [Dynamic Programming Problems](dynamic-programming-problems/)
 - [Data Structures Problems](data-structures/)
+- [Strings Problems](strings/)
 - [Math Problems](math/)

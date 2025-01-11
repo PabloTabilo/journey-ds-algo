@@ -11,27 +11,23 @@ int main(){
     for(int i=0;i<n;i++){
 	cin >> p[i];
     }
-    ll l = *min_element(p.begin(), p.end());
-    ll r = *max_element(p.begin(), p.end());
-    ll ans = 0; // tot cost
-    for(int i=0;i<n;i++){
-	ans += abs(r - p[i]);
+    
+    // f(x) = sum |p_i - x| -> the median minimize this convex function
+    // remember that it's a convex function so has a single global minimum
+    //
+    // Why binary search here doesn't work?
+    // because bs assume a continuous and strictly
+    // increasing or decreasing function
+    sort(p.begin(), p.end());
+    ll median1 = p[n/2];
+    ll median2 = p[n/2 - 1];
+    ll cost1 = 0, cost2 = 0;
+    for(auto pi : p){
+	cost2 += abs(median1 - pi);
+	cost1 += abs(median2 - pi);
     }
-    while(l <= r){
-	ll mid = l + (r - l)/2;
-	ll curr = 0; // current cost
-	for(int i=0;i<n;i++){
-	    curr += abs(mid - p[i]);
-	}
-	if(curr > ans){
-	    l = mid + 1;
-	}else{
-	    cout << "mid, curr = " << mid << "," << curr << endl;
-	    ans = min(ans, curr);
-	    r = mid - 1;
-	}
-    }
-    cout << ans << endl;
+
+    cout << min(cost1, cost2) << endl;
     return 0;
 }
 

@@ -25,13 +25,14 @@ Rolling Hashing#In simple terms, rolling hashing is a technique used to comput
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="strings">
+    <meta property="article:modified_time" content="2025-01-09T19:30:52-03:00">
 <title>Rabin - Karp algorithm | A Journey Through DS and Algorithms</title>
 <link rel="icon" href="/favicon.png" >
 <link rel="manifest" href="/manifest.json">
 <link rel="canonical" href="http://localhost:1313/strings/rabinkarp/">
 <link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.3b508d1ace1eb54c23ae0d38b2dcf72a0bf901ca5c41835ee5cbb303fd1e82da.js" integrity="sha256-O1CNGs4etUwjrg04stz3Kgv5AcpcQYNe5cuzA/0egto=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.66040ba1eab73e280d73b78d62c1c8d5d10700d1b233a9acdbe3f6f9f2582d84.js" integrity="sha256-ZgQLoeq3PigNc7eNYsHI1dEHANGyM6ms2&#43;P2&#43;fJYLYQ=" crossorigin="anonymous"></script>
 
 <link rel="stylesheet" href="/katex/katex.min.css">
 <script defer src="/katex/katex.min.js"></script>
@@ -596,7 +597,43 @@ $$</li>
 </ul>
 </li>
 </ul>
-<h3 id="references">
+<h4 id="preprocess-purpose-and-sliding-window-approach">
+  Preprocess purpose and Sliding Window approach
+  <a class="anchor" href="#preprocess-purpose-and-sliding-window-approach">#</a>
+</h4>
+<div class="highlight"><pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>ll MAX_WEIGHT1 <span style="color:#666">=</span> <span style="color:#666">1</span>, MAX_WEIGHT2 <span style="color:#666">=</span> <span style="color:#666">1</span>;
+</span></span><span style="display:flex;"><span><span style="color:#008000;font-weight:bold">for</span>(<span style="color:#b00040">int</span> i<span style="color:#666">=</span><span style="color:#666">0</span>;i<span style="color:#666">&lt;</span>m;i<span style="color:#666">++</span>){
+</span></span><span style="display:flex;"><span>    MAX_WEIGHT1 <span style="color:#666">=</span> (MAX_WEIGHT1 <span style="color:#666">*</span> RADIX1) <span style="color:#666">%</span> MOD1;
+</span></span><span style="display:flex;"><span>    MAX_WEIGHT2 <span style="color:#666">=</span> (MAX_WEIGHT2 <span style="color:#666">*</span> RADIX2) <span style="color:#666">%</span> MOD2;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><ul>
+<li>This is for precalculating the radix $high$ degree value used in the sliding window approach, where:
+$$
+H_i(s) = H_i(s) \cdot \text{RADIX} - c_{i-1} \cdot \text{RADIX-High-degree} + c_{i + m - 1}
+$$</li>
+<li>We perform this operation in constant time. The same technique is described in the book Introduction to Algorithms by MIT (where the radix value is <code>10</code>):</li>
+</ul>
+<p><img src="/images/rabinKarpCite.PNG" alt="Alt text" />
+<strong>Figure 1</strong>: <em>Introduction to Algorithms</em>, MIT, p. 991.</p>
+<ul>
+<li>Finally, with the previous method, we perform $O(n - m)$ iterations, where $n$ is the size of thee <code>text</code> and $m$ is the size of the <code>pattern</code>.</li>
+</ul>
+<h4 id="why-introduce-the-modulus">
+  Why introduce the modulus?
+  <a class="anchor" href="#why-introduce-the-modulus">#</a>
+</h4>
+<div class="highlight"><pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>hashHay.first <span style="color:#666">=</span> ((hashHay.first <span style="color:#666">*</span> RADIX1)<span style="color:#666">%</span>MOD1 <span style="color:#666">-</span> ((haystack[i<span style="color:#666">-</span><span style="color:#666">1</span>]<span style="color:#666">-</span><span style="color:#ba2121">&#39;a&#39;</span>)<span style="color:#666">*</span>MAX_WEIGHT1)<span style="color:#666">%</span>MOD1 <span style="color:#666">+</span> (haystack[i<span style="color:#666">+</span>m<span style="color:#666">-</span><span style="color:#666">1</span>]<span style="color:#666">-</span><span style="color:#ba2121">&#39;a&#39;</span>) <span style="color:#666">+</span> MOD1) <span style="color:#666">%</span> MOD1;
+</span></span></code></pre></div><p>Because the <code>hash</code> value can become very large, for example, in this problem, the radix value is <code>26</code> and if the size of the pattern is <code>100</code>, the maximum radix or high-degree radix would be, following our example, $26^{100}$. For that reason, we need to modularize to avoid bounds problems.
+However, introducing a modulus increases the chances of collisions, also known as <code>spurious hit</code>.</p>
+<h4 id="how-can-we-solve-the-spurious-hit-problem">
+  How can we solve the spurious hit problem?
+  <a class="anchor" href="#how-can-we-solve-the-spurious-hit-problem">#</a>
+</h4>
+<p>We can use <strong>double hashing</strong>. This method significantly reduces the probability of collisions because a value would need to produce the same hash from both hash functions, which is highly unlikely.</p>
+<div class="highlight"><pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#008000;font-weight:bold">if</span>(hashNeedle.first <span style="color:#666">==</span> hashHay.first <span style="color:#666">&amp;&amp;</span> hashNeedle.second <span style="color:#666">==</span> hashHay.second){
+</span></span><span style="display:flex;"><span>    <span style="color:#008000;font-weight:bold">return</span> i;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="references">
   References
   <a class="anchor" href="#references">#</a>
 </h3>

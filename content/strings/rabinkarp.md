@@ -154,6 +154,40 @@ $$
 H(s) = (c_0 \cdot p^{m-1} + c_1 \cdot p^{m-2} + ... + c_{m-1}) \mod M
 $$
 
+#### Preprocess purpose and Sliding Window approach
+```cpp
+ll MAX_WEIGHT1 = 1, MAX_WEIGHT2 = 1;
+for(int i=0;i<m;i++){
+    MAX_WEIGHT1 = (MAX_WEIGHT1 * RADIX1) % MOD1;
+    MAX_WEIGHT2 = (MAX_WEIGHT2 * RADIX2) % MOD2;
+}
+```
+* This is for precalculating the radix $high$ degree value used in the sliding window approach, where:
+$$
+H_i(s) = H_i(s) \cdot \text{RADIX} - c_{i-1} \cdot \text{RADIX-High-degree} + c_{i + m - 1}
+$$
+* We perform this operation in constant time. The same technique is described in the book Introduction to Algorithms by MIT (where the radix value is `10`):
+
+![Alt text](/images/rabinKarpCite.PNG)
+**Figure 1**: *Introduction to Algorithms*, MIT, p. 991.
+
+* Finally, with the previous method, we perform $O(n - m)$ iterations, where $n$ is the size of thee `text` and $m$ is the size of the `pattern`.
+
+#### Why introduce the modulus?
+```cpp
+hashHay.first = ((hashHay.first * RADIX1)%MOD1 - ((haystack[i-1]-'a')*MAX_WEIGHT1)%MOD1 + (haystack[i+m-1]-'a') + MOD1) % MOD1;
+```
+Because the `hash` value can become very large, for example, in this problem, the radix value is `26` and if the size of the pattern is `100`, the maximum radix or high-degree radix would be, following our example, $26^{100}$. For that reason, we need to modularize to avoid bounds problems.
+However, introducing a modulus increases the chances of collisions, also known as `spurious hit`.
+#### How can we solve the spurious hit problem?
+We can use __double hashing__. This method significantly reduces the probability of collisions because a value would need to produce the same hash from both hash functions, which is highly unlikely.
+```cpp
+if(hashNeedle.first == hashHay.first && hashNeedle.second == hashHay.second){
+    return i;
+}
+```
+
+
 ### References
 * Problem: https://leetcode.com/problems/find-the-index-of-the-first-occurrence-in-a-string/description/
 * Cormen, Thomas H., Charles E. Leiserson, Ronald L. Rivest, and Clifford Stein. Introduction to Algorithms. 3rd ed. Cambridge: MIT Press, 2009. Chapter 32, String Matching. Available at https://edutechlearners.com/download/Introduction_to_algorithms-3rd%20Edition.pdf
