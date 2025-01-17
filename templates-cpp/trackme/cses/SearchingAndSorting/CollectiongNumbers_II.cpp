@@ -1,0 +1,71 @@
+
+#include <bits/stdc++.h>
+using namespace std;
+
+using ll = long long;
+
+int main(){
+    ios::sync_with_stdio(false); cin.tie(0); cout.tie(0);
+    int n, m;
+    cin >> n >> m;
+    vector<int> a(n);
+    for(int i=0;i<n;i++) cin >> a[i];
+    set<int> s;
+    s.insert(-2);
+    int cnt = 0;
+    for(int sw=0;sw<m;sw++){
+	int a, b;
+	cin >> a >> b;
+	int i = pos[a];
+	int j = pos[b];
+	swap(a[i], a[j]);
+	pos[a] = j;
+	pos[b] = i;
+
+    }
+    for(int i=0;i<n;i++){
+	auto it = s.lower_bound(a[i]);
+	it--;
+	int prev = *it;
+	int d = abs(a[i] - prev);
+	if(d != 1){
+	    cnt++;
+	}else{
+	    s.erase(it);
+	}
+	s.insert(a[i]);
+    }
+    cout << cnt << endl;
+    
+    // 10 17 14 -> 2
+
+    // 4 2 1 5 3 6
+    // 1 2 3 1 2 1
+    //
+    // 4 5
+    // 2 3
+    // 1 6
+    //
+    
+    // 4 2 1 5 3
+    // 1 2 3 1 3
+    //
+    // 4     5
+    //     1   3
+    //   2
+    //
+    //
+    //i:0 
+    //{4}
+    //i:1
+    //{4, 2}
+    //i:2
+    //{4, 2, 1}
+    //i:3
+    //{4, 5} are increasing
+    //{5, 2, 1}
+    //i:4
+
+    return 0;
+}
+
